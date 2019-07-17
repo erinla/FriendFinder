@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Friend Finder Survey</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <style>
+        body {
+            background-image: linear-gradient(-90deg, #89f7fe, #66a6ff);
+        }
+
+        .main {
+            font-family: "Arial", "Helvetica", sans-serif;
+            font-size: 16px;
+            background-color: white;
+
+            width: 90%;
+            padding: 15px;
+            margin: auto;
+        }
+
+        .button {
+            background-color: #008CBA;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 15px;
+        }
+
+        footer {
+            font-family: "Arial", "Helvetica", sans-serif;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <h1>Survey Questions</h1>
+        <hr>
+        <h2>About You</h2>
+        <p>Name (Required)</p>
+        <p><input type="text" class="form-control" id="name" required></p>
+
+        Link to Photo Image (Required)
+        <p><input type="text" class="form-control" id="photo" required></p>
+
+        <hr>
+
+        <h2>Question 1</h2>
+        Cookies are a major staple of your diet.
+        <p>
+            <select class="chosen-select" id="q1" name="questions">
+                <option disabled selected value>Select an Option</option>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+        </p>
+        <h2>Question 2</h2>
+        Generally speaking, it's not easy being green.
+        <p>
+            <select class="chosen-select" id="q2" name="questions">
+                <option disabled selected value>Select an Option</option>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+        </p>
+        <h2>Question 3</h2>
+        You consider yourself a party animal.
+        <p>
+            <select class="chosen-select" id="q3" name="questions">
+                <option disabled selected value>Select an Option</option>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+        </p>
+        <h2>Question 4</h2>
+        Being tickled is a favorite pasttime of yours.
+        <p>
+            <select class="chosen-select" id="q4" name="questions">
+                <option disabled selected value>Select an Option</option>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+        </p>
+        <h2>Question 5</h2>
+        You wish your superpower was flying.
+        <p>
+            <select class="chosen-select" id="q5" name="questions">
+                <option disabled selected value>Select an Option</option>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+        </p>
+
+        <button type="submit" class="button" id="submit">
+            Submit</button>
+    </div>
+
+
+    <footer class="footer">
+        <div class="container">
+            <p><a href="/api/friends">API Table Link</a> | <a href="/api/waitlist">GitHub Repo</a>
+        </div>
+    </footer>
+
+    <div class="modal" id="my-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="match-name"></p>
+                    <div id="match-photo"></div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript">
+
+        // Capture the form inputs
+        $("#submit").on("click", function (event) {
+            event.preventDefault();
+
+            var userData = {
+                name: $("#name").val(),
+                photo: $("#photo").val(),
+                scores: [
+                    $("#q1").val(),
+                    $("#q2").val(),
+                    $("#q3").val(),
+                    $("#q4").val(),
+                    $("#q5").val(),
+                ]
+            };
+            $.ajax({ url: "/api/friends", type: "POST", data: userData }).then(function (data) {
+                console.log(data);
+                $("#match-name").text(data.user.friendName)
+                var photo = $("<img>").attr("src", data.user.friendPhoto)
+                $("#match-photo").append(photo);
+                $('#my-modal').modal("toggle")
+            })
+        })
+
+
+    </script>
+
+</body>
+
+
+
+</html>

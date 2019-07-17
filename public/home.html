@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Friend Finder</title>
+    <style>
+        body {
+            background-image: linear-gradient(-90deg, #89f7fe, #66a6ff);
+        }
+
+        #main {
+            background-color: white;
+            width: 90%;
+            padding: 15px;
+            margin: auto;
+            font-family: "Arial", "Helvetica", sans-serif;
+            /* border-radius: 15px; */
+            font-size: 32px;
+        }
+
+        .button {
+            background-color: #008CBA;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 15px;
+        }
+
+        footer {
+            font-family: "Arial", "Helvetica", sans-serif;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <h1>Friend Finder</h1>
+        <hr>
+        <p>Answer a few survey questions.</p>
+        <p>Then find the friend with the greatest compatibility!</p>
+        <a href="/survey"><button class="button">Go To Survey</button></a>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p><a href="/api/friends">API Table Link</a> | <a href="/api/waitlist">GitHub Repo</a>
+        </div>
+    </footer>
+</body>
+
+</html>
