@@ -6,7 +6,7 @@
 var friendsArray = [
     {
         friendName: "Cookie Monster",
-        friendPhoto: "../images/cookiemonster.jpg",
+        friendPhoto: "./images/cookiemonster.jpg",
         friendScores: [
             5,
             4,
@@ -17,7 +17,7 @@ var friendsArray = [
     },
     {
         friendName: "Kermit",
-        friendPhoto: "https://i.kym-cdn.com/entries/icons/original/000/017/823/maxresdefault.jpg",
+        friendPhoto: "./images/kermit.jpg",
         friendScores: [
             1,
             5,
@@ -28,7 +28,7 @@ var friendsArray = [
     },
     {
         friendName: "Animal",
-        friendPhoto: "https://en.wikipedia.org/wiki/Animal_(Muppet)#/media/File:Animal_(Muppet).jpg",
+        friendPhoto: "./images/animal.jpg",
         friendScores: [
             5,
             5,
@@ -39,7 +39,7 @@ var friendsArray = [
     },
     {
         friendName: "Elmo",
-        friendPhoto: "https://muppetmindset.files.wordpress.com/2012/10/63500-elmoquestion.jpg",
+        friendPhoto: "./images/elmo.jpg",
         friendScores: [
             5,
             3,
@@ -50,7 +50,7 @@ var friendsArray = [
     },
     {
         friendName: "Big Bird",
-        friendPhoto: "images/bigbird.jpg",
+        friendPhoto: "./images/bigbird.jpg",
         friendScores: [
             1,
             4,

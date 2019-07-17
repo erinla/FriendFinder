@@ -18,10 +18,11 @@ app.use(express.json());
 // ================================================================================
 // ROUTER
 // ================================================================================
+app.use(express.static("./public"));
 
 require("./routing/apiRoutes")(app);
 require("./routing/htmlRoutes")(app);
-app.use(express.static('app/public'))
+
 
 // =============================================================================
 // LISTEN

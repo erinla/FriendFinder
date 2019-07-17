@@ -11,6 +11,11 @@
 
 
     <style>
+        img {
+            height: 50%;
+            width: 50%;
+        }
+
         body {
             background-image: linear-gradient(-90deg, #89f7fe, #66a6ff);
         }
@@ -49,6 +54,7 @@
 <body>
 
     <div class="main">
+        <img src="./images/bigbird.jpg" alt="">
         <h1>Survey Questions</h1>
         <hr>
         <h2>About You</h2>
@@ -97,7 +103,7 @@
             </select>
         </p>
         <h2>Question 4</h2>
-        Being tickled is a favorite pasttime of yours.
+        Being tickled is a favorite pastime of yours.
         <p>
             <select class="chosen-select" id="q4" name="questions">
                 <option disabled selected value>Select an Option</option>
@@ -128,22 +134,23 @@
 
     <footer class="footer">
         <div class="container">
-            <p><a href="/api/friends">API Table Link</a> | <a href="/api/waitlist">GitHub Repo</a>
+            <p><a href="/api/friends">API Table Link</a> | <a href="https://github.com/erinla/FriendFinder">GitHub
+                    Repo</a>
         </div>
     </footer>
 
-    <div class="modal" id="my-modal">
+    <div class="modal" id="results-modal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
+                    <h5 class="modal-title">Your Match!</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <p id="match-name"></p>
-                    <div id="match-photo"></div>
+                    <img id="match-photo"></img>
 
                 </div>
                 <div class="modal-footer">
@@ -152,6 +159,7 @@
             </div>
         </div>
     </div>
+
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -163,31 +171,60 @@
         crossorigin="anonymous"></script>
     <script type="text/javascript">
 
+
         // Capture the form inputs
         $("#submit").on("click", function (event) {
             event.preventDefault();
+            // Form validation
+            function validateForm() {
+                var isValid = true;
+                $(".form-control").each(function () {
+                    if ($(this).val() === "") {
+                        isValid = false;
+                    }
+                });
 
-            var userData = {
-                name: $("#name").val(),
-                photo: $("#photo").val(),
-                scores: [
-                    $("#q1").val(),
-                    $("#q2").val(),
-                    $("#q3").val(),
-                    $("#q4").val(),
-                    $("#q5").val(),
-                ]
-            };
-            $.ajax({ url: "/api/friends", type: "POST", data: userData }).then(function (data) {
-                console.log(data);
-                $("#match-name").text(data.user.friendName)
-                var photo = $("<img>").attr("src", data.user.friendPhoto)
-                $("#match-photo").append(photo);
-                $('#my-modal').modal("toggle")
-            })
-        })
+                $(".chosen-select").each(function () {
 
+                    if ($(this).val() === "") {
+                        isValid = false;
+                    }
+                });
+                return isValid;
+            }
 
+            // If all required fields are filled
+            if (validateForm()) {
+                // Create an object for the user's data
+
+                var userData = {
+                    name: $("#name").val(),
+                    photo: $("#photo").val(),
+                    scores: [
+                        $("#q1").val(),
+                        $("#q2").val(),
+                        $("#q3").val(),
+                        $("#q4").val(),
+                        $("#q5").val(),
+                    ]
+                };
+
+                // AJAX post the data to the friends API.
+                $.post("/api/friends", userData, function (data) {
+                    console.log(data);
+                    // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+                    $("#match-name").text(data.name);
+
+                    $("#match-photo").attr("src", data.photo);
+
+                    // Show the modal with the best match
+                    $("#results-modal").modal("toggle");
+
+                });
+            } else {
+                alert("Please fill out all fields before submitting!");
+            }
+        });
     </script>
 
 </body>
