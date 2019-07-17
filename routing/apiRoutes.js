@@ -16,11 +16,11 @@ module.exports = function (app) {
 
     app.post("/api/friends", function (req, res) {
         var userInput = req.body;
-        console.log(friendData)
-        var userResponse = userInput.scores;
+
+        var userResponse = userInput.friendScores;
         var match = {
-            name: "",
-            photo: "",
+            friendName: "",
+            friendPhoto: "",
             difference: 500
         };
 
@@ -30,15 +30,15 @@ module.exports = function (app) {
                 totalDifference += Math.abs(friendData[i].friendScores[j] - userResponse[j]);
 
                 if (totalDifference <= match.difference) {
-                    match.name = friendData[i].friendName;
-                    match.photo = friendData[i].friendPhoto;
+                    match.friendName = friendData[i].friendName;
+                    match.friendPhoto = friendData[i].friendPhoto;
                     match.difference = totalDifference;
                 }
             }
         }
 
         friendData.push(userInput);
-
+        console.log(userInput)
         res.json(match);
 
     });
