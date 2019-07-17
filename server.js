@@ -18,7 +18,7 @@ app.use(express.json());
 // ================================================================================
 // ROUTER
 // ================================================================================
-app.use(express.static("./public"));
+app.use(express.static("public"));
 
 require("./routing/apiRoutes")(app);
 require("./routing/htmlRoutes")(app);
